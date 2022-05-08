@@ -1,8 +1,7 @@
 import json
 import os
 
-from config import RAW_DATA_PATH, PROCESSED_DATA_PATH, TRAINSET_RATIO,label_dict
-
+from config import RAW_DATA_PATH, PROCESSED_DATA_PATH, TRAINSET_RATIO, label_dict
 
 
 # 将txt/json数据用dataframe读出

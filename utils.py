@@ -1,7 +1,7 @@
-import torch
-from config import *
 import numpy as np
 from sklearn import metrics
+
+from config import *
 
 
 def train(epoch, model, data_loader, optimizer, scheduler, device):
@@ -84,14 +84,14 @@ def test(model, data, device):
     return y_true, y_pred
 
 
-def infer(model,tokenizer,sentence):
+def infer(model, tokenizer, sentence):
     sentence_ids = tokenizer.convert_tokens_to_ids(sentence)
     sentence_tensor = torch.LongTensor(sentence_ids).unsqueeze(0).to(DEVICE)
     mask = (sentence_tensor > 0)
     y = model(sentence_tensor, None, mask, is_test=True)
     y = y[0]
     y_tag = [idx2tag[i] for i in y]
-    y_tag_cn =[]
+    y_tag_cn = []
     for i in range(len(y_tag)):
         if y_tag[i] in ['<PAD>', '[CLS]', '[SEP]', 'O']:
             y_tag_cn.append('O')
@@ -99,26 +99,24 @@ def infer(model,tokenizer,sentence):
             y_tag_cn.append(label_dict2[y_tag[i][2:]])
     # 末尾加一个'O'，方便下面算法
     y_tag_cn.append('O')
-    result=[]
+    result = []
     i = 0
     cur_tag = 'None'
     while i < len(y_tag_cn):
         if y_tag_cn[i] != 'O':
             pos_start = i
             cur_tag = y_tag_cn[i]
-            pos_end = i+1
+            pos_end = i + 1
             while pos_end < len(y_tag_cn):
                 if y_tag_cn[pos_end] == cur_tag:
-                    pos_end +=1
+                    pos_end += 1
                 else:
                     break
-            result.append([cur_tag,sentence[pos_start:pos_end],pos_start,pos_end])
+            result.append([cur_tag, sentence[pos_start:pos_end], pos_start, pos_end])
             i = pos_end
         else:
-            i+=1
+            i += 1
     for entity in result:
         entity_name = ''.join(entity[1])
         print("The result are shown below:")
         print(f"entity_name:{entity_name}, entity_type:{entity[0]}, start_pos:{entity[2]}, end_pos:{entity[3]}")
-
-

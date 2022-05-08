@@ -1,7 +1,8 @@
 import torch
-from config import BASE_MODEL,tag2idx,idx2tag
 from torch.utils.data import Dataset
 from transformers import BertTokenizer
+
+from config import BASE_MODEL, tag2idx
 
 
 class NerDataset(Dataset):
@@ -10,7 +11,7 @@ class NerDataset(Dataset):
         self.sentences = []
         self.labels = []
         self.tokenizer = BertTokenizer.from_pretrained(BASE_MODEL)
-        self.MAX_LEN = 256-2
+        self.MAX_LEN = 256 - 2
 
         with open(file, 'r', encoding='utf-8') as f:
             lines = [line.split('\n')[0] for line in f.readlines() if len(line.strip()) != 0]

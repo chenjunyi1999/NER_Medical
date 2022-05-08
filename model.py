@@ -1,8 +1,9 @@
 import torch
 import torch.nn as nn
-from transformers import BertModel
 from torchcrf import CRF
-from config import EMBEDDING_DIM,HIDDEN_DIM
+from transformers import BertModel
+
+from config import EMBEDDING_DIM, HIDDEN_DIM
 
 
 class Bert_BiLSTM_CRF(nn.Module):
@@ -26,7 +27,7 @@ class Bert_BiLSTM_CRF(nn.Module):
             # BERT默认返回两个 last_hidden_state, pooler_output
             # last_hidden_state：输出序列每个位置的语义向量，形状为：(batch_size, sequence_length, hidden_size)
             # pooler_output：[CLS]符号对应的语义向量，经过了全连接层和tanh激活；该向量可用于下游分类任务
-            embeds, _ = self.bert(sentence,return_dict=False)
+            embeds, _ = self.bert(sentence, return_dict=False)
         # LSTM默认返回两个 output, (h,c)
         # output:[batch_size,seq_len,hidden_dim * 2]   if birectional
         # h,c :[num_layers * 2,batch_size,hidden_dim]  if birectional
