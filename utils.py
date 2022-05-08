@@ -116,7 +116,7 @@ def infer(model, tokenizer, sentence):
             i = pos_end
         else:
             i += 1
+    print("The result are shown below:")
     for entity in result:
         entity_name = ''.join(entity[1])
-        print("The result are shown below:")
         print(f"entity_name:{entity_name}, entity_type:{entity[0]}, start_pos:{entity[2]}, end_pos:{entity[3]}")
