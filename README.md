@@ -34,7 +34,8 @@ python infer.py --mode='infer' --ckpt_name="best" --txt="xxxxxxxxxx(中文输入
 
 
 ## 参考文献
-1. [NER_Medical笔记心得](https://github.com/chenjunyi1999/ML-Tutorial/tree/main/Code_Notes/NER_Medical%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0)
-2. [Pytorch-crf doc](https://pytorch-crf.readthedocs.io/en/stable/)
-3. [XavierWww/Chinese-Medical-Entity-Recognition](https://github.com/XavierWww/Chinese-Medical-Entity-Recognition)
+1. [NER_Medical笔记总结](https://github.com/chenjunyi1999/ML-Tutorial/tree/main/Code_Notes/NER_Medical%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0)
+2. [JayJay:nlp中的实体关系抽取方法总结](https://zhuanlan.zhihu.com/p/77868938)
+3. [Pytorch-crf doc](https://pytorch-crf.readthedocs.io/en/stable/)
+
 
