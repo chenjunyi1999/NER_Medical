@@ -29,7 +29,7 @@ python main.py --mode='train'
 ```
 4. **模型推理**
 ```
-python infer.py --mode='infer' --ckpt_name="best" --txt="xxxxxxxxxx(中文输入)"
+python main.py --mode='infer' --ckpt_name="best" --txt="xxxxxxxxxx(中文输入)"
 ```
 
 
