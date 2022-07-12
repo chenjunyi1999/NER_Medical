@@ -68,7 +68,7 @@ if __name__ == "__main__":
         y_test, y_pred = test(best_model, test_iter, DEVICE)
         if not os.path.exists(SAVED_MODEL_PATH):
             os.makedirs(SAVED_MODEL_PATH)
-            torch.save({'model': model.state_dict()}, SAVED_MODEL_PATH + 'best.ckpt')
+        torch.save({'model': best_model.state_dict()}, SAVED_MODEL_PATH + 'best.ckpt')
         print('Train End ... Model saved')
 
     elif args.mode == 'infer':
